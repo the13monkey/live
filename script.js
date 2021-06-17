@@ -1,8 +1,18 @@
-const appHeight = () => {
-    document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`)
-    var header = document.getElementById("main-header")
-    document.documentElement.style.setProperty('--header-height', `${header.clientHeight}px`)
-}
+jQuery(document).ready(function(){
 
-window.addEventListener('resize', appHeight)
-appHeight()
+    $("video").click(function(){
+
+        var srcTarget = $(this).find("source").attr("src");
+        var labelTarget = $(this).parent().prev().html(); 
+        var srcOriginal = $("#control-video").find("source").attr("src");
+        var labelOriginal = $("#control-video").prev().html();
+
+        $(this).find("source").attr("src", srcOriginal);
+        $(this).parent().prev().html(labelOriginal);
+        $("#control-video").find("source").attr("src", srcTarget);
+        $("#container-control").find("label").html(labelTarget);
+        
+    });
+
+});
+

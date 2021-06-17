@@ -22,38 +22,45 @@
     <div class="row">
       <div class="col col-12 col-lg-4 col-xl-3 pl-0 d-none d-lg-block">
         <div class="video-wrapper mb-3" id="c1">
-          <video id="c1-video" class="video-js vjs-default-skin">
-            <source src="big-bunny.mp4" type="video/mp4">
+          <label>Camera 1</label>
+          <video id="c1-video" class="video-js vjs-default-skin" data-name="Camera 1">
+            <source src="big-bunny1.mp4" type="video/mp4" data-name="Camera 1">
           </video>
         </div>
         <div class="video-wrapper mb-3" id="c2">
+          <label>Camera 2</label>
           <video id="c2-video" class="video-js vjs-default-skin">
-            <source src="big-bunny.mp4" type="video/mp4">
+            <source src="big-bunny2.mp4" type="video/mp4" data-name="Camera 2">
           </video>
         </div>
-        <div class="video-wrapper mb-3" id="c3">
+        <div class="video-wrapper mb-3 bg-dark bg-dark d-flex justify-content-center align-items-center" id="c3">
+          <p class="text-light mb-0">Camrea Off</p>
+          <!-- <label>Camera 3</label>
           <video id="c3-video" class="video-js vjs-default-skin">
-            <source src="big-bunny.mp4" type="video/mp4">
-          </video>
+            <source src="big-bunny3.mp4" type="video/mp4" data-name="Camera 3">
+          </video> -->
         </div>
-        <div class="video-wrapper" id="c4">
+        <div class="video-wrapper bg-dark d-flex justify-content-center align-items-center" id="c4">
+          <p class="text-light mb-0">Camrea Off</p>
+          <!-- <label>Camera 4</label>
           <video id="c4-video" class="video-js vjs-default-skin">
-            <source src="big-bunny.mp4" type="video/mp4">
-          </video>
+            <source src="big-bunny4.mp4" type="video/mp4" data-name="Camera 4">
+          </video> -->
         </div>
       </div>
       <div class="col col-12 col-lg-8 col-xl-9 px-0">
         <div class="video-wrapper" id="container-control">
-          <video id="control-video" class="video-js vjs-default-skin">
-            <source src="big-bunny.mp4" type="video/mp4">
+          <label>Camera Control</label>
+          <video id="control-video" class="video-js vjs-default-skin" controls>
+            <source src="big-bunny.mp4" type="video/mp4" data-name="Camera Control">
           </video>
         </div>
       </div>
       <div id="mobile-toggle" class="d-flex d-lg-none w-100 fixed-bottom justify-content-between align-items-center px-0 px-md-3">
         <button type="button" class="btn btn-primary">Camera 1</button>
         <button type="button" class="btn btn-primary">Camera 2</button>
-        <button type="button" class="btn btn-primary">Camera 3</button>
-        <button type="button" class="btn btn-primary">Camera 4</button>
+        <button type="button" class="btn btn-primary btn-secondary" disabled aria-disabled="true">Camera Off</button>
+        <button type="button" class="btn btn-primary btn-secondary" disabled aria-disabled="true">Camera Off</button>
       </div>
     </div>
   </div>
@@ -63,26 +70,45 @@
          src="big-bunny.mp4"
          type="video/mp4">
     </video> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
     <!-- <script src="https://wpspeedpro.io/live/videojs-contrib-hls.min.js"></script>
     <script src="https://wpspeedpro.io/live/videojs-http-streaming.js"></script> -->
     <script>
+      const appHeight = () => {
+          document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`)
+          var header = document.getElementById("main-header")
+          document.documentElement.style.setProperty('--header-height', `${header.clientHeight}px`)
+      }
+
+      window.addEventListener('resize', appHeight)
+      appHeight()
       
       var control = videojs('control-video');
       var c1 = videojs('c1-video');
       var c2 = videojs('c2-video');
-      var c3 = videojs('c3-video');
-      var c4 = videojs('c4-video');
+      // var c3 = videojs('c3-video');
+      // var c4 = videojs('c4-video');
 
-      document.getElementById("control-video").addEventListener("click", function(){
-          control.play(); 
+      var controlPlay = document.getElementById("control-video");
+      controlPlay.addEventListener("click", function(){
+
+        if (control.paused()) {
+          c1.pause();
+          c2.pause();
+          // c3.pause();
+          // c4.pause();
+        } else {
           c1.play();
           c2.play();
-          c3.play();
-          c4.play();
-      })
+          // c3.play();
+          // c4.play();
+        }
+
+      });
+      
     </script>
  
     

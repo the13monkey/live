@@ -11,8 +11,8 @@ h1{
     font-size:1.25rem!important;
 }
 #liveindicator{
-    min-width:0.5rem;
-    min-height:0.5rem; 
+    min-width:0.75rem;
+    min-height:0.75rem; 
     border-radius:50%;
     display:inline-block;
     vertical-align:middle; 
@@ -72,10 +72,58 @@ button.btn.btn-primary{
     padding:0.25rem 0.5rem!important; 
     background-color:#652c90!important; 
     border:none!important; 
-    margin-bottom:1rem!important; 
+    margin-bottom:0.25rem!important; 
+}
+.vjs-default-skin .vjs-big-play-button:before{
+    text-shadow: 0.05em 0.05em 0.1em rgba(255, 255, 255, .86);
+    top: 0; 
+    color:#fff!important; 
+}
+.vjs-big-play-button{
+    top:calc(50% - 1.25em)!important; 
+    left:calc(50% - 2em)!important; 
+    z-index:99999999!important; 
+}
+.vjs-default-skin .vjs-control-bar{
+    bottom: 3.5rem;
+    width: calc(100% - 2rem);
+    left: 1rem; 
+}
+.vjs-seek-to-live-control, .vjs-picture-in-picture-control, .vjs-volume-control{
+    display:none!important; 
+}
+.vjs-default-skin .vjs-fullscreen-control{
+    top:-1rem; 
+}
+button.vjs-play-control, button.vjs-mute-control, button.vjs-fullscreen-control {
+    background-color:#fff;
+    border:none;
+    border-radius:50%!important; 
+    margin-top:0.5em!important; 
+    width: 3em!important; 
+    height: 3em!important; 
+}
+.vjs-current-time, .vjs-time-control, .vjs-duration {
+    margin-top:0.5em!important; 
+}
+.vjs-current-time *, .vjs-time-control *, .vjs-duration *{
+    line-height: 3em!important; 
+}
+label{
+    position: absolute; 
+    border: none; 
+    z-index:99999; 
+    top:5px;
+    left:0.5rem; 
+    color:#fff; 
 }
 @media screen and (min-width:768px) {
     button.btn.btn-primary{
         font-size:1.25rem!important; 
+    }
+}
+@media screen and (min-width:992px) {
+    .vjs-default-skin .vjs-control-bar{
+        bottom:1.5rem; 
     }
 }
